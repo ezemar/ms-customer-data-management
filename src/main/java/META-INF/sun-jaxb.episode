@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.3.0 
+Consulte <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
+Gerado em: 2025.02.18 às 06:20:56 AM BRT 
+
+  -->
+      
+    <bindings xmlns:tns="http://web.service.sysmap.com.br/" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="~tns:clientListType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.ClientListType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:customHeaderType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.CustomHeaderType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:offsetLimitType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.OffsetLimitType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:identificationType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.IdentificationType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:clientType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.ClientType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:identificationListType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.IdentificationListType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:addressType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.AddressType"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:addressListType">
+                  
+            <class ref="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub.AddressListType"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>

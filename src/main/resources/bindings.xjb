@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               jaxb:version="2.3">
+    <jaxb:globalBindings>
+        <!-- Força o uso do Jakarta em vez de javax -->
+        <jaxb:package name="br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub"/>
+        <jaxb:bindXmlElement default="true" xmlns:jakarta="https://jakarta.ee">
+            <jaxb:generatedAnnotation>false</jaxb:generatedAnnotation>
+        </jaxb:bindXmlElement>
+    </jaxb:globalBindings>
+</jaxb:bindings>
