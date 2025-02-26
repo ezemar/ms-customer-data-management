@@ -31,7 +31,7 @@ public interface CustomerDataManagementControllerAPI {
                         @ApiResponse(responseCode = "504", description = "Request timeout exceeded", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = ErrorInfoDto.class))})
                 })
                 @PostMapping(value="/CustomerDataManagement/ClientInformation")
-                ResponseEntity<GetClientInfoByIdResponseDTO> getClientInfoById(@RequestHeader (value = "Authorization") String authorization,
+                ResponseEntity<GetClientInfoByIdResponseDTO> getClientInfoById(@RequestHeader (value = "Authorization", required = true) String authorization,
                                                                  @Valid @RequestBody GetClientInfoByIdRequestDTO getClientInfoByIdRequestDTO
                                                                  ) throws DatatypeConfigurationException, AbstractGenericException;
                 }

@@ -45,47 +45,31 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
-	<!-- this is needed for the webservice template -->
-	<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
 
-	<!--validation requires this package -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-
-	<!--this is for swagger management -->
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-soap-jakarta</artifactId>
-            <version>13.5</version>
-        </dependency>
+<!-- Dependências Controller -->
 		<dependency>
-    	
-		<groupId>io.swagger.core.v3</groupId>
+			<groupId>io.swagger.core.v3</groupId>
     		<artifactId>swagger-annotations</artifactId>
     		<version>2.2.28</version>
 		</dependency>
 
-    <!-- Dependência para Jakarta JAXB -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>	
+
+<!-- Dependências para implementar o WebServiceTemplate -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+<!-- Dependências para gerar os stubs pelo JAXB -->
     	<dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-xjc</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.sun.activation</groupId>
-            <artifactId>jakarta.activation</artifactId>
-            <version>2.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-soap-jakarta</artifactId>
-            <version>13.1</version>
-        </dependency>
+
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
@@ -97,7 +81,19 @@
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-     
+
+<!-- Dependências para implementar o adapter SOAP -->
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-soap-jakarta</artifactId>
+            <version>13.1</version>
+        </dependency>
+ 
 	</dependencies>
 
 	<build>
@@ -127,6 +123,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- O plugin abaixo é executado toda vez que o arquivo pom.xml é salvo (em alguns casos precisa rodar "mvn clean install" ou "mvn compile") -->
 			<!--
 			<plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -153,36 +150,7 @@
                 </configuration>
             </plugin>
 			-->
-			<!--
-<plugin>
-            <groupId>org.jvnet.jaxb2.maven2</groupId>
-            <artifactId>maven-jaxb2-plugin</artifactId>
-            <version>0.14.0</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>generate</goal>
-                    </goals>
-                </execution>
-            </executions>
-            <configuration>
-                <schemaLanguage>WSDL</schemaLanguage>
-                <cleanPackageDirectories>false</cleanPackageDirectories>
-                <generateDirectory>${project.basedir}/src/main/java/</generateDirectory>
-                <outputDirectory></outputDirectory>
-                <generatePackage>br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub</generatePackage>
-                <schemas>
-                    <schema>
-                        <url>http://localhost:7001/demo/ws?WSDL</url>
-                    </schema>
-                </schemas>
-                <bindingFiles>
-                    <bindingFile>${project.basedir}/src/main/resources/bindings.xjb</bindingFile>
-                </bindingFiles>
-            </configuration> 
-        </plugin>
-		-->
- 
+			
 		</plugins>
 	</build>
 

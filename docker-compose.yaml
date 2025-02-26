@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  ms-customer-data-management:
+    image: openjdk:17-jdk-slim  # Usando a imagem do OpenJDK (ou a sua própria imagem, se você tiver)
+    container_name: ms-customer-data-management
+    ports:
+      - "8899:8899"  # Expondo a porta 8899 do seu microserviço para o host
+    volumes:
+      - ./target:/app  # Monta o diretório local 'target' no container
+    command: ["java", "-jar", "/app/ms-customer-data-management-1.0.0.jar"]  # Comando para rodar o JAR
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod  # Adicione variáveis de ambiente, se necessário
+    depends_on:
+      - sysmap-service  # Garantindo que o sysmap-service seja iniciado primeiro
+
+  sysmap-service:
+    image: sysmap/service-image  # Se você tiver essa imagem local ou já construída
+    container_name: sysmap-service
+    # Não exponha a porta 7001 para o host. Ela será usada internamente entre os containers.
+    expose:
+      - "7001"  # Expondo apenas internamente no Docker (sem mapear para o host)
+    networks:
+      - backend  # Usando rede personalizada para comunicação entre containers
+
+networks:
+  backend:
+    driver: bridge  # Rede interna para comunicação entre containers
