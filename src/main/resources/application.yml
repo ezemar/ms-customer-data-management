@@ -4,7 +4,9 @@ spring:
 
     webservice:
         wsSysmap:
-            uri: http://127.0.0.1:7001/demo/ws
+            #se não estiver utilizando docker e quiser rodar localmente precisa utilizar a primeira opção
+            #uri: http://localhost:7001/demo/ws
+            uri: http://host.docker.internal:7001/demo/ws
             class:
                 package: br.com.sysmap.dip.infrastructure.soap.wsSysmap.stub
 
