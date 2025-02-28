@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://web.service.sysmap.com.br/" 
+xmlns:tns="http://web.service.sysmap.com.br/">
+	
+	<xsd:complexType name="identificationType">
+		<xsd:sequence>
+			<xsd:element name="documentType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="value" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="identificationListType">
+		<xsd:sequence>
+			<xsd:element name="identification" type="tns:identificationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="clientType">
+		<xsd:sequence>
+			<xsd:element name="fullName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="bornDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="nationality" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressList" type="tns:addressListType"/>
+			<xsd:element name="individualIdentificationList" type="tns:identificationListType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="clientListType">
+		<xsd:sequence>
+			<xsd:element name="clientList" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="client" type="tns:clientType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="addressType">
+		<xsd:sequence>
+			<xsd:element name="addressCEP" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressCity" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressComplement" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressDistrict" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressStreet" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="addressUF" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="addressListType">
+		<xsd:sequence>
+			<xsd:element name="address" type="tns:addressType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="offsetLimitType">
+		<xsd:sequence>
+			<xsd:element name="offsetLimit" type="xsd:integer"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="customHeaderType">
+		<xsd:sequence>
+			<xsd:element name="jwt" type="xsd:string" mincOccurs="0"/>
+			<xsd:element name="application" type="xsd:string" mincOccurs="0"/>
+			<xsd:element name="transactionId" type="xsd:string" mincOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+		
+	<xsd:element name="customHeader" type="tns:customHeaderType" minOccurs="0"/>
+	
+	<xsd:element name="getClientInfoListRequest" type="tns:offsetLimitType"/>
+	<xsd:element name="getClientInfoListResponse" type="tns:clientListType" minOccurs="1"/>
+	<xsd:element name="getClientInfoByIdRequest" type="tns:identificationType" minOccurs="1"/>
+	<xsd:element name="getClientInfoByIdResponse" type="tns:clientType" minOccurs="1"/>
+</xsd:schema>

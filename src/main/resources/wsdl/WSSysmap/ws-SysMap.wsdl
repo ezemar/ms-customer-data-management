@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions 
+
+xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" 
+xmlns:wsp="http://www.w3.org/ns/ws-policy" 
+xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http://web.service.sysmap.com.br/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns="http://schemas.xmlsoap.org/wsdl/" 
+targetNamespace="http://web.service.sysmap.com.br/" 
+name="ws-SysMap"
+
+>
+	<types>
+		<xsd:schema>
+			<xsd:import namespace="http://web.service.sysmap.com.br/" schemaLocation="./ws-SysMap.xsd"/>
+		</xsd:schema>
+	</types>
+	
+	<message name="getClientInfoListMessageRequest"> 
+		<part name="customHeader" element="tns:customHeader"/>
+		<part name="parameter" element="tns:getClientInfoListRequest"/>
+	</message>
+	<message name="getClientInfoListMessageResponse">
+		<part name="parameter" element="tns:getClientInfoListResponse"/>
+	</message>	
+	<message name="getClientInfoByIdMessageRequest">
+		<part name="customHeader" element="tns:customHeader"/>
+		<part name="parameter" element="tns:getClientInfoByIdRequest"/>
+	</message>
+	<message name="getClientInfoByIdMessageResponse">
+		<part name="parameter" element="tns:getClientInfoByIdResponse"/>
+	</message>
+	
+	<portType name="ws-SysMap-portType">
+	
+		<operation name="getClientInfoList">
+			<input message="tns:getClientInfoListMessageRequest"/>
+			<output message="tns:getClientInfoListMessageResponse"/>
+		</operation>
+	
+		<operation name="getClientInfoById">
+			<input message="tns:getClientInfoByIdMessageRequest"/>
+			<output message="tns:getClientInfoByIdMessageResponse"/>
+		</operation>
+	
+	</portType>
+	<binding name="ws-SysMap-binding" type="tns:ws-SysMap-portType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+		
+		<operation name="getClientInfoList">
+			<soap:operation soapAction="getClientInfoList"/>
+			<input>
+				<soap:header message="tns:getClientInfoListMessageRequest" part="customHeader" use="literal" />
+				<soap:body use="literal" parts="parameter" />
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://web.service.sysmap.com.br/"/>
+			</output>
+		</operation>
+		
+		<operation name="getClientInfoById">
+			<soap:operation soapAction="getClientInfoById"/>
+			<input>
+				<soap:header message="tns:getClientInfoByIdMessageRequest" part="customHeader" use="literal" />
+				<soap:body use="literal" parts="parameter" />
+			</input>
+			<output>
+				<soap:body use="literal" namespace="http://web.service.sysmap.com.br/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="ws-SysMap">
+		<port name="ws-SysMap-port" binding="tns:ws-SysMap-binding">
+			<soap:address location="http://localhost:7001/demo/ws"/>
+		</port>
+	</service>
+</definitions>
