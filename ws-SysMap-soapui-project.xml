@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="3d6f8108-09ee-45fb-999d-e1aa5d6ee0c9" activeEnvironment="Default" name="ws-SysMap" resourceRoot="" soapui-version="5.8.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="dfca043f-3edc-42a8-864b-b6116b5e2177" wsaVersion="NONE" name="ws-SysMap-binding" type="wsdl" bindingName="{http://web.service.sysmap.com.br/}ws-SysMap-binding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/ezequiel.martinez/Desktop/ApresentaçãoSOAP/ws-SysMap.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\ezequiel.martinez\Desktop\ApresentaçãoSOAP\ws-SysMap.wsdl"><con:part><con:url>file:\C:\Users\ezequiel.martinez\Desktop\ApresentaçãoSOAP\ws-SysMap.wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://web.service.sysmap.com.br/" name="ws-SysMap" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://web.service.sysmap.com.br/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://web.service.sysmap.com.br/" schemaLocation="./ws-SysMap.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="getClientInfoListMessageRequest">
+    <part name="customHeader" element="tns:customHeader"/>
+    <part name="parameter" element="tns:getClientInfoListRequest"/>
+  </message>
+  <message name="getClientInfoListMessageResponse">
+    <part name="parameter" element="tns:getClientInfoListResponse"/>
+  </message>
+  <message name="getClientInfoByIdMessageRequest">
+    <part name="customHeader" element="tns:customHeader"/>
+    <part name="parameter" element="tns:getClientInfoByIdRequest"/>
+  </message>
+  <message name="getClientInfoByIdMessageResponse">
+    <part name="parameter" element="tns:getClientInfoByIdResponse"/>
+  </message>
+  <portType name="ws-SysMap-portType">
+    <operation name="getClientInfoList">
+      <input message="tns:getClientInfoListMessageRequest"/>
+      <output message="tns:getClientInfoListMessageResponse"/>
+    </operation>
+    <operation name="getClientInfoById">
+      <input message="tns:getClientInfoByIdMessageRequest"/>
+      <output message="tns:getClientInfoByIdMessageResponse"/>
+    </operation>
+  </portType>
+  <binding name="ws-SysMap-binding" type="tns:ws-SysMap-portType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="getClientInfoList">
+      <soap:operation soapAction="getClientInfoList"/>
+      <input>
+        <soap:header message="tns:getClientInfoListMessageRequest" part="customHeader" use="literal"/>
+        <soap:body use="literal" parts="parameter"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://web.service.sysmap.com.br/"/>
+      </output>
+    </operation>
+    <operation name="getClientInfoById">
+      <soap:operation soapAction="getClientInfoById"/>
+      <input>
+        <soap:header message="tns:getClientInfoByIdMessageRequest" part="customHeader" use="literal"/>
+        <soap:body use="literal" parts="parameter"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://web.service.sysmap.com.br/"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ws-SysMap">
+    <port name="ws-SysMap-port" binding="tns:ws-SysMap-binding">
+      <soap:address location="http://localhost:7001/demo/ws"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\ezequiel.martinez\Desktop\ApresentaçãoSOAP\ws-SysMap.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://web.service.sysmap.com.br/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://web.service.sysmap.com.br/">
+  <xsd:complexType name="identificationType">
+    <xsd:sequence>
+      <xsd:element name="documentType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="identificationListType">
+    <xsd:sequence>
+      <xsd:element name="identification" type="tns:identificationType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="clientType">
+    <xsd:sequence>
+      <xsd:element name="fullName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="bornDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="nationality" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressList" type="tns:addressListType"/>
+      <xsd:element name="individualIdentificationList" type="tns:identificationListType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="clientListType">
+    <xsd:sequence>
+      <xsd:element name="clientList" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="client" type="tns:clientType" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="addressType">
+    <xsd:sequence>
+      <xsd:element name="addressCEP" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressCity" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressComplement" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressDistrict" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressNumber" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressStreet" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressType" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="addressUF" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="addressListType">
+    <xsd:sequence>
+      <xsd:element name="address" type="tns:addressType" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="offsetLimitType">
+    <xsd:sequence>
+      <xsd:element name="offsetLimit" type="xsd:integer"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="customHeaderType">
+    <xsd:sequence>
+      <xsd:element name="jwt" type="xsd:string" mincOccurs="0"/>
+      <xsd:element name="application" type="xsd:string" mincOccurs="0"/>
+      <xsd:element name="transactionId" type="xsd:string" mincOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="customHeader" type="tns:customHeaderType" minOccurs="0"/>
+  <xsd:element name="getClientInfoListRequest" type="tns:offsetLimitType"/>
+  <xsd:element name="getClientInfoListResponse" type="tns:clientListType" minOccurs="1"/>
+  <xsd:element name="getClientInfoByIdRequest" type="tns:identificationType" minOccurs="1"/>
+  <xsd:element name="getClientInfoByIdResponse" type="tns:clientType" minOccurs="1"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SMSP-GZV7590:7001/demo/ws</con:endpoint><con:endpoint>http://SMSP-GZV7590:7001/mockws-SysMap-binding</con:endpoint><con:endpoint>http://localhost:7001/demo/ws</con:endpoint></con:endpoints><con:operation id="9a7fc6dd-fd27-4918-9ab3-154a36b313cc" isOneWay="false" action="getClientInfoById" name="getClientInfoById" bindingOperationName="getClientInfoById" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="97d39ce3-286c-4c2f-959c-236071504e2f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7001/demo/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.service.sysmap.com.br/">\r
+   <soapenv:Header>\r
+      <web:customHeader>\r
+         <jwt>?</jwt>\r
+         <application>?</application>\r
+         <transactionId>?</transactionId>\r
+      </web:customHeader>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <web:getClientInfoByIdRequest>\r
+         <!--Optional:-->\r
+         <documentType>?</documentType>\r
+         <!--Optional:-->\r
+         <value>?</value>\r
+      </web:getClientInfoByIdRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="getClientInfoById"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e2932eb3-1edc-4f11-9ef7-cea3e06d7241" isOneWay="false" action="getClientInfoList" name="getClientInfoList" bindingOperationName="getClientInfoList" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6d5931d5-8adf-468e-bb13-a0778302bcf0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:7001/demo/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.service.sysmap.com.br/">\r
+   <soapenv:Header>\r
+      <web:customHeader>\r
+         <jwt>?</jwt>\r
+         <application>?</application>\r
+         <transactionId>?</transactionId>\r
+      </web:customHeader>\r
+   </soapenv:Header>\r
+   <soapenv:Body>\r
+      <web:getClientInfoListRequest>\r
+         <offsetLimit>?</offsetLimit>\r
+      </web:getClientInfoListRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="getClientInfoList"/></con:call></con:operation></con:interface><con:mockService id="3c0c9dcd-17b3-4b3c-8cda-8a1128fe7493" port="7001" path="/demo/ws" host="localhost" name="ws-SysMap-binding MockService" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getClientInfoById" id="f349435b-7f73-4e98-9c0f-c619a580e4cf" interface="ws-SysMap-binding" operation="getClientInfoById"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="81eb72c7-c011-4e5e-a916-d043750cc337" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.service.sysmap.com.br/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getClientInfoByIdResponse>
+         <!--Optional:-->
+         <fullName>Fulano</fullName>
+         <!--Optional:-->
+         <bornDate>1990-09-05</bornDate>
+         <!--Optional:-->
+         <nationality>Brasileiro</nationality>
+         <addressList>
+            <!--Zero or more repetitions:-->
+            <address>
+               <!--Optional:-->
+               <addressCEP>?</addressCEP>
+               <!--Optional:-->
+               <addressCity>Buenos Aires</addressCity>
+               <!--Optional:-->
+               <addressComplement>?</addressComplement>
+               <!--Optional:-->
+               <addressDistrict>?</addressDistrict>
+               <!--Optional:-->
+               <addressNumber>?</addressNumber>
+               <!--Optional:-->
+               <addressStreet>?</addressStreet>
+               <!--Optional:-->
+               <addressType>?</addressType>
+               <!--Optional:-->
+               <addressUF>?</addressUF>
+            </address>
+             <address>
+               <!--Optional:-->
+               <addressCEP>?</addressCEP>
+               <!--Optional:-->
+               <addressCity>São Paulo</addressCity>
+               <!--Optional:-->
+               <addressComplement>?</addressComplement>
+               <!--Optional:-->
+               <addressDistrict>?</addressDistrict>
+               <!--Optional:-->
+               <addressNumber>?</addressNumber>
+               <!--Optional:-->
+               <addressStreet>?</addressStreet>
+               <!--Optional:-->
+               <addressType>?</addressType>
+               <!--Optional:-->
+               <addressUF>?</addressUF>
+            </address>
+         </addressList>
+         <individualIdentificationList>
+            <!--Zero or more repetitions:-->
+            <identification>
+               <documentType>RG</documentType>
+               <value>35648267</value>
+            </identification>
+             <identification>
+               <documentType>CPF</documentType>
+               <value>24315368495</value>
+            </identification>
+         </individualIdentificationList>
+      </web:getClientInfoByIdResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="getClientInfoById"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getClientInfoList" id="0da0b1b1-0066-4106-a888-09505179f024" interface="ws-SysMap-binding" operation="getClientInfoList"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="6670d18b-7cde-40bc-ac12-93648a412865" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://web.service.sysmap.com.br/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getClientInfoListResponse>
+         <!--Optional:-->
+         <clientList>
+            <!--Zero or more repetitions:-->
+            <client>
+               <!--Optional:-->
+               <fullName>?</fullName>
+               <!--Optional:-->
+               <bornDate>?</bornDate>
+               <!--Optional:-->
+               <nationality>?</nationality>
+               <addressList>
+                  <!--Zero or more repetitions:-->
+                  <address>
+                     <!--Optional:-->
+                     <addressCEP>?</addressCEP>
+                     <!--Optional:-->
+                     <addressCity>?</addressCity>
+                     <!--Optional:-->
+                     <addressComplement>?</addressComplement>
+                     <!--Optional:-->
+                     <addressDistrict>?</addressDistrict>
+                     <!--Optional:-->
+                     <addressNumber>?</addressNumber>
+                     <!--Optional:-->
+                     <addressStreet>?</addressStreet>
+                     <!--Optional:-->
+                     <addressType>?</addressType>
+                     <!--Optional:-->
+                     <addressUF>?</addressUF>
+                  </address>
+               </addressList>
+               <individualIdentificationList>
+                  <!--Zero or more repetitions:-->
+                  <identification>
+                     <!--Optional:-->
+                     <documentType>?</documentType>
+                     <!--Optional:-->
+                     <value>?</value>
+                  </identification>
+               </individualIdentificationList>
+            </client>
+         </clientList>
+      </web:getClientInfoListResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="getClientInfoList"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
