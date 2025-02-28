@@ -16,12 +16,55 @@ Micro-serviço que retorna informações de clientes
 
 **Endpoints disponiveis**
 > [POST] /CustomerDataManagement/ClientInformation
+> 
+> Header: **Authorization**. Tipo: String. Obrigatorio. Do tipo Bearer. Ex: Bearer 123
 >
 > exemplo de request:
 ```
 {
     "documentType" : "RG",
     "identificationId" : "13468495"
+}
+```
+
+> exemplo resposta:
+```
+{
+    "fullName": "Fulano",
+    "bornDate": "1990-09-05",
+    "nationality": "Brasileiro",
+    "addressList": [
+        {
+            "addressCEP": "?",
+            "addressCity": "Buenos Aires",
+            "addressComplement": "?",
+            "addressDistrict": "?",
+            "addressNumber": "?",
+            "addressStreet": "?",
+            "addressType": "?",
+            "addressUF": "?"
+        },
+        {
+            "addressCEP": "?",
+            "addressCity": "São Paulo",
+            "addressComplement": "?",
+            "addressDistrict": "?",
+            "addressNumber": "?",
+            "addressStreet": "?",
+            "addressType": "?",
+            "addressUF": "?"
+        }
+    ],
+    "individualIdentificationList": [
+        {
+            "documentType": "RG",
+            "value": "35648267"
+        },
+        {
+            "documentType": "CPF",
+            "value": "24315368495"
+        }
+    ]
 }
 ```
 
