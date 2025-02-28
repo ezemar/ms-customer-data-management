@@ -14,6 +14,17 @@ Micro-serviço que retorna informações de clientes
 > 
 > MOCK WebService SOAP: ./ws-SysMap-soapui-project.xml
 
+**Endpoints disponiveis**
+> [POST] /CustomerDataManagement/ClientInformation
+>
+> exemplo de request:
+```
+{
+    "documentType" : "RG",
+    "identificationId" : "13468495"
+}
+```
+
 ## Dependências Maven
 
 **Dependências do plugin JaxB que gera os Stubs:**
