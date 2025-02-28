@@ -131,21 +131,41 @@ Foi utilizado o plugin JAXB 0.14.0 para criar as classes Stubs
 
 
 Como rodar este projeto?
-    1. Clonar projeto 
-git clone https://github.com/ezemar/ms-customer-data-management
-    2. Compilar no Maven 
-mvn clean package
-    4. Criar e montar imagem docker: 
-docker build -t sysmap/service-image .
-docker-compose up --build
-    5. Importar e executar MockService 
+
+1. Clonar projeto 
+    
+>```git clone https://github.com/ezemar/ms-customer-data-management```
+
+2. Compilar no Maven 
+    
+> ```mvn clean package```
+
+4. Criar e montar imagem docker:
+
+> ```docker build -t sysmap/service-image .```
+> ```docker-compose up --build```
+
+5. Importar e executar MockService 
+
 Clique em Import:
+
+![image](https://github.com/user-attachments/assets/3078b7eb-3f7c-4212-8b4c-eee1d2e18214)
 
 Selecionar o arquivo ws-SysMap-soapui-project.xml
 
+![image](https://github.com/user-attachments/assets/0e47cf68-9e7d-40db-9cc9-72094e356a66)
+
 Duplo clique no elemento ws-SysMap-binding MockService
+
+![image](https://github.com/user-attachments/assets/92020b39-6ef0-4dcb-9257-ac7377314816)
 
 Clicar em Play para inicializar o mock:
 
-Mock inicializado:
+![image](https://github.com/user-attachments/assets/a68fbd8c-05a8-4ed5-afa2-a05e5799c2ec)
 
+Mock inicializado e escutando requisições na porta 7001:
+
+![image](https://github.com/user-attachments/assets/e7be21e5-475e-48cd-ac0a-7b362890df31)
+
+
+Fim.
