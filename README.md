@@ -120,30 +120,30 @@ Foi utilizado o plugin JAXB 0.14.0 para criar as classes Stubs
 
 >⚠️ Por padrão, os stubs são gerados com referencias aos pacotes do javax. Ao implementar os stubs no adapter e ao tentar fazer o marshmaller isto ocasiona um problema de compatibilidade entre jakarta e javax, por isso foi necessario o seguinte ajuste: Todos os pacotes que antes eram importados como javax.xml.bind.annotation.* passaram a serem importados do pacote jakarta.xml.bind.* como mostra a seguinte imagem:
 
-    1. 
+1. 
 
 ![Captura de tela 2025-02-26 083644](https://github.com/user-attachments/assets/e8eb37f2-722b-4e85-aa21-27aafbc5c02a)
 
 
-    2. 
+2. 
 
 ![Captura de tela 2025-02-26 083509](https://github.com/user-attachments/assets/21f5daca-4a64-467a-9e71-a05b26a386ff)
 
 
-Como rodar este projeto?
+## Como rodar este projeto?
 
 1. Clonar projeto 
     
->```git clone https://github.com/ezemar/ms-customer-data-management```
+```git clone https://github.com/ezemar/ms-customer-data-management```
 
 2. Compilar no Maven 
     
-> ```mvn clean package```
+```mvn clean package```
 
 4. Criar e montar imagem docker:
 
-> ```docker build -t sysmap/service-image .```
-> ```docker-compose up --build```
+```docker build -t sysmap/service-image .```
+```docker-compose up --build```
 
 5. Importar e executar MockService 
 
