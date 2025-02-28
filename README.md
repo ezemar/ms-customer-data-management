@@ -7,7 +7,8 @@ Micro-serviço que retorna informações de clientes
 > Nome artefato: ms-customer-data-management
 > Versão Java: 17
 > Versão SpringBoot: 3.4.2
-
+> Contrato WSDL do adapter: ./src/main/resources/wsdl/WSSysmap
+> MOCK WebService SOAP: ./ws-SysMap-soapui-project.xml
 
 ## Dependências Maven
 
